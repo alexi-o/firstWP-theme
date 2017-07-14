@@ -1,0 +1,63 @@
+/*
+Theme Name: Alexi's Porfolio Creator
+Author: Alexi O'Hearn
+Author URI: http://alexi.codes/
+Description: This 2017 theme can be used to create a static portfolio page for artists, developers, photographers, numismatics, philatelists and much more!
+*/
+* {
+  color: white;
+}
+
+body{
+  background-color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 35px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  margin-top: 50px;
+  letter-spacing: 1px;
+}
+
+.brand-heading {
+  color: #42DCA3;
+  text-align: center;
+  font-size: 90px;
+  z-index: 40;
+  margin: 200px 0 200px 0;
+}
+
+.menu{
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.menu-item{
+  font-size: 30px;
+  display: inline-block; 
+  padding: 0 20px;
+}
+.menu-item a {
+  text-decoration: none;
+}
+.menu-item a:hover {
+  color: #42DCA3;
+}
+
+p {
+  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 24px;
+  margin: 10px;
+  text-align: center;
+}
