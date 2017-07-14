@@ -1,6 +1,12 @@
 <?php
 
-add_theme_support('thumbnails');
+add_theme_support( 'post-thumbnails' );
+
+// function ao_portfolio_icon( $args ){
+// 	$args['menu_icon'] = 'dashicons-portfolio',
+// 	return $args;
+// }
+// add_filter();
 
 function wp_theme_styles() {
 
@@ -9,11 +15,6 @@ function wp_theme_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'wp_theme_styles' );
 
-function wp_theme_js() {
-
-    wp_enqueue_script('script_js', get_template_directory_uri() . '/js/script.js', array('jquery'), '', true );
-    wp_enqueue_script('script_js', get_template_directory_uri() . '/js/bootstrap.js', '', '', true );
-}
 
 function wp_theme_widgets_init() {
 	register_sidebar(
