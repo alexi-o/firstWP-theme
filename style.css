@@ -8,6 +8,26 @@ Description: This 2017 theme can be used to create a static portfolio page for a
   color: white;
 }
 
+.intro {
+  display: table;
+  width: 100%;
+  height: auto;
+  z-index: -10;
+  text-align: center;
+  color: white;
+  background-color: black;
+  filter: grayscale(20%);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.intro .intro-body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 body{
   background-color: black;
 }
@@ -31,8 +51,13 @@ h6 {
   color: #42DCA3;
   text-align: center;
   font-size: 90px;
-  z-index: 40;
   margin: 200px 0 200px 0;
+  position: relative;
+}
+
+.intro-text {
+  position: relative;
+  bottom: 50px;
 }
 
 .menu{
@@ -40,24 +65,214 @@ h6 {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: black;
   width: 100%;
+  z-index: 50;
 }
 .menu-item{
   font-size: 30px;
   display: inline-block; 
   padding: 0 20px;
 }
-.menu-item a {
+.menu-item a, .footer-link a{
   text-decoration: none;
+  color: white;
 }
-.menu-item a:hover {
+.menu-item a:hover, .footer-link a:hover {
   color: #42DCA3;
+}
+
+.textwidget p, .textwidget h2 {
+  position: relative;
+  margin: 0 auto;
+  bottom: 30px;
+}
+h2 {
+  font-size: 3em;
 }
 
 p {
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 24px;
+  width: 75%;
   margin: 10px;
   text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
+footer {
+    padding-top:32px;
+}
+
+footer .container{
+    text-align: center;
+}
+
+footer .footer-copyright{
+    margin-bottom: 35px;
+    text-align: center;
+    color: #777;
+}
+
+footer ul{
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 18px;
+}
+
+footer a{
+    color: #282b2d;
+    font-size: 18px;
+}
+
+footer li{
+    display: inline-block;
+    margin: 0px 15px;
+    line-height: 2;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+footer {
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}
+
+.portfolio-container {
+  width: 100%;
+  text-align: center;
+}
+
+.portfolio-image {
+  max-height: 217px;
+}
+
+.card {
+  margin: 0 30px;
+  max-width: 380px;
+  vertical-align: top;
+  width: 25%;
+  min-width: 128px;
+  display: inline-block;
+  height: 500px;
+  text-align: center;
+  font-family: arial;
+  background-color: white;
+}
+
+.card-container {
+  color: black;
+  padding: 0 16px;
+  max-width: 380px;
+  height: 300px;
+  position: relative;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+  }
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.card-container p, .card h1 {
+  color: black;
+}
+
+.card-container p {
+   width: 100%;
+}
+
+.card-container h1 {
+  max-height: 29px;
+  overflow: visible;
+}
+
+.skills-image {
+  height: 100px;
+  width: 100px;
+}
+
+
+
+
+.card.effect_random.flipped .card__front {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.card.effect_random.flipped .card__back {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+}
+
+.card__text {
+  position: relative;
+  color: #42dca3;
+  font-size: 20px;
+  line-height: 100px;
+  vertical-align: center;
+}
+
+.card__front,
+.card__back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.5s;
+          transition: transform 0.5s;
+}
+
+.card__back {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+          position: absolute;
+          bottom: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+  .card {
+    min-width: 250px;
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card {
+    min-width: 250px;
+    width: 50%;
+    margin: 5px 0;
+  }
 }

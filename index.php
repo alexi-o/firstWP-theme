@@ -6,46 +6,59 @@
             </div>
         </div>
       </section>
-<!-- Portolio Section -->
-<section id="portfolio" class="content-section text-center">
-<div class="portfolio">
-    <div class="container">
-            <div class="row">
-              <div class="large-12">
-
-        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-            <h2 class="section-heading">Portfolio</h2>
-
-        <?php endwhile; endif; ?>
-    
-       </div>
-    </div>
-
-<?php 
-
-    $args = array(
-        'post_type' => 'portfolio'
+	<section id="portfolio">
+		<h2 class="section-heading">Portfolio</h2>
+	
+<div class="portfolio-container row">
+	<?php 
+    //Portfolio query
+    $query_args = array(
+        'post_type' => 'post',
+        'category_name' => 'portfolio'
     );
-    $query = new WP_Query( $args );
+    $portfolioQuery = new WP_query( $query_args ); 
 
-?>
-
-<?php if( $query->have_posts() ) : while( $query->have_posts() ) : $query->the_post(); ?>
-
-    <div class="medium-4 small-6 columns portfolio-item">
-        <a href="<?php the_permalink(); ?>" class="portfolio-link" data-toggle="modal">
-            <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                    <i class="fa fa-plus fa-3x"></i>
-                </div>
+    ?>
+    <?php
+    //Portfolio loop
+    while ( $portfolioQuery->have_posts() ) : $portfolioQuery->the_post(); ?>
+            <div class="card">
+                <img class="portfolio-image" src="<?php the_post_thumbnail_url(); ?>" style="width:100%">
+                    <div class="card-container">
+                        <h1><?php the_title(); ?></h1>
+                            <p class="title">Description</p>
+                                <p class="portfolio-caption"><?php the_content(); ?></p>
+                        <a href="<?php the_post_thumbnail_url(); ?>"><button>More</button></a>
+                    </div>
             </div>
-            <img src="<?php the_post_thumbnail('large'); ?>" class="img-responsive" alt="">
-        </a>
-    </div>
+	    <?php endwhile; ?>
+        <?php rewind_posts(); ?>
+    </section>
+    <section id="skills">
+		<h2 class="section-heading">Skills</h2>
+        <?php 
+    //Portfolio query
+        $query_args = array(
+            'post_type' => 'post',
+            'category_name' => 'skills'
+        );
+        $skillsQuery = new WP_query( $query_args ); 
 
-<?php endwhile; endif; wp_reset_postdata(); ?>
-
-</section>
-
+        ?>
+        <?php $skillsQuery = new WP_query( 'category=skills$posts_per_page=10' ); ?>
+            <?php while ( $skillsQuery->have_posts() ) : $skillsQuery->the_post(); ?>
+                <div class="card effect_random" data-id="4">
+                    <div class="card__front">
+                        <span class="card__text"><img src="<?php the_post_thumbnail_url(); ?>"></span>
+                    </div>
+                  <div class="card__back">
+                    <span class="card__text"><?php the_title(); ?></span>
+                  </div>
+                </div>
+            <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
+    </section>
+    <section id="contact">
+		<h2 class="section-heading">Contact</h2>
+    </section>
 <?php get_footer(); ?>

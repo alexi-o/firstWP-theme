@@ -1,20 +1,20 @@
 <?php 
 /*
-* Plugin Name: Skills Plugin
+* Plugin Name: Portfolio Plugin
 * Plugin URI: http://alexi.codes/
-* Description: A plugin for displaying skills
+* Description: A plugin for displaying portfolio pieces on your website
 * Author: Alexi O'Hearn
 * Author URI: http://alexi.codes/
 * Version 1.0
 */
 if ( !defined( 'ABSPATH' ) ) {
     exit;
-}
+}	
 
-function ao_skill_post(){
-
-    $singular = 'Job Skill';
-    $plural = 'Job Skills';
+function ao_portfolio_post(){
+    
+    $singular   = 'Portfolio';
+    $plural     = 'Porfolios';
 
     $labels = array(
         'name'                  => $plural,
@@ -33,7 +33,7 @@ function ao_skill_post(){
     );
     
     $args = array(
-		'labels'              => $labels,
+		    'labels'              => $labels,
 	        'public'              => true,
 	        'publicly_queryable'  => true,
 	        'exclude_from_search' => false,
@@ -42,7 +42,7 @@ function ao_skill_post(){
 	        'show_in_menu'        => true,
 	        'show_in_admin_bar'   => true,
 	        'menu_position'       => 10,
-	        'menu_icon'           => 'dashicons-hammer',
+	        'menu_icon'           => 'dashicons-book',
 	        'can_export'          => true,
 	        'delete_with_user'    => false,
 	        'hierarchical'        => false,
@@ -52,22 +52,22 @@ function ao_skill_post(){
 	        'map_meta_cap'        => true,
 	        // 'capabilities' => array(),
 	        'rewrite'             => array( 
-	        	'slug' => 'skills',
+	        	'slug' => 'portfolio',
 	        	'with_front' => true,
 	        	'pages' => true,
 	        	'feeds' => true,
 	        ),
 	        'supports'            => array( 
-	        	'title',
-                'thumbnail', 
+	        	'title', 
+                'thumbnail',
 	        	'editor', 
 	        	'author', 
 	        	'custom-fields' 
 	        )
 	);
-    
-    register_post_type( 'skills', $args );
+
+    register_post_type( 'portfolio', $args );
 }
-add_action( 'init', 'ao_skill_post' );
+add_action( 'init', 'ao_portfolio_post' );
 
 ?>

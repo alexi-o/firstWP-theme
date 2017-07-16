@@ -2,33 +2,36 @@
 
 add_theme_support( 'post-thumbnails' );
 
-// function ao_portfolio_icon( $args ){
-// 	$args['menu_icon'] = 'dashicons-portfolio',
-// 	return $args;
-// }
-// add_filter();
-
 function wp_theme_styles() {
-
+	wp_enqueue_style( 'bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' );
 	wp_enqueue_style( 'main_css', get_template_directory_uri() . '/style.css' );
-
 }
 add_action( 'wp_enqueue_scripts', 'wp_theme_styles' );
+
+function wp_theme_scripts(){
+	wp_enqueue_script( 'js-script', get_stylesheet_directory_uri() . '/script.js', array('jquery'), '1.0.0', false );
+}
+add_action( 'wp_enqueue_scripts', 'wp_theme_scripts');
+
+function wp_theme_jquery() {
+	if (!is_admin()) {
+		wp_enqueue_script('jquery');
+	}
+}
+add_action('init', 'wp_theme_jquery');
 
 
 function wp_theme_widgets_init() {
 	register_sidebar(
 		array(
 			'name' => 'Background Image',
-			'id' => 'background_image'
+			'id' => 'background_image',
 		)
 	);
 	register_sidebar(
 		array(
 			'name' => 'Header Text',
 			'id' => 'header_text',
-			'before_widget' => '<p class="intro-text">',
-			'after_widget' => '</p>',
 			'before_title' => '<h1 class="brand-heading">',
 			'after_title' => '</h1>'
 		)
@@ -37,8 +40,6 @@ function wp_theme_widgets_init() {
         array(
             'name' => 'Main Content Box',
             'id' => 'main_content_box',
-            'before_widget' => '<p>',
-            'after_widget' => '</p>',
             'before_title' => '<h2 id="about">',
             'after_title' => '</h2>'
         )
@@ -46,11 +47,11 @@ function wp_theme_widgets_init() {
 }
 
 function wp_theme_register_menu() {
-    register_nav_menu('new-menu', __('Header Menu'));
+    register_nav_menu('header-menu', __('Header Menu'));
+	register_nav_menu('footer-menu', __('Footer Menu'));
 }
 
 add_action( 'widgets_init', 'wp_theme_widgets_init' );
-add_action( 'wp_enqueue_scripts', 'wp_theme_js' );
 add_action('init', 'wp_theme_register_menu');
 
 ?>
