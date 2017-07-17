@@ -13,7 +13,6 @@
 	<?php 
     //Portfolio query
     $query_args = array(
-        'post_type' => 'post',
         'category_name' => 'portfolio'
     );
     $portfolioQuery = new WP_query( $query_args ); 
@@ -32,22 +31,23 @@
                     </div>
             </div>
 	    <?php endwhile; ?>
-        <?php rewind_posts(); ?>
+        <?php wp_reset_query(); ?>
     </section>
     <section id="skills">
 		<h2 class="section-heading">Skills</h2>
+        <div class="skills-container">
         <?php 
-    //Portfolio query
+        //Skills query
         $query_args = array(
-            'post_type' => 'post',
             'category_name' => 'skills'
         );
         $skillsQuery = new WP_query( $query_args ); 
 
         ?>
-        <?php $skillsQuery = new WP_query( 'category=skills$posts_per_page=10' ); ?>
-            <?php while ( $skillsQuery->have_posts() ) : $skillsQuery->the_post(); ?>
-                <div class="card effect_random" data-id="4">
+        <?php 
+        //Skills Loop
+        while ( $skillsQuery->have_posts() ) : $skillsQuery->the_post(); ?>
+                <div class="skills-card effect_random col-lg-1 col-xs-4" data-id="<?php the_ID(); ?>">
                     <div class="card__front">
                         <span class="card__text"><img src="<?php the_post_thumbnail_url(); ?>"></span>
                     </div>
@@ -56,7 +56,7 @@
                   </div>
                 </div>
             <?php endwhile; ?>
-            <?php wp_reset_postdata(); ?>
+        </div>
     </section>
     <section id="contact">
 		<h2 class="section-heading">Contact</h2>

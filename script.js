@@ -1,8 +1,8 @@
 console.log('js running');
 (function(){
     var cards = document.querySelectorAll(".card.effect_random");
-    var timeMin = 1;
-    var timeMax = 10;
+    var timeMin = 90;
+    var timeMax = 110;
     var timeOuts = [];
 
     for( var i = 0; i < cards.length; i++){
@@ -10,7 +10,7 @@ console.log('js running');
         console.log(card);
         var cardId = card.getAttribute("data-id");
         var id = "timeoutID" + cardId;
-        var time = randomNum(timeMin, timeMax) * 1000;
+        var time = randomNum(timeMin, timeMax) * 100;
         cardsTimeout(id, time, card);
     }
     function cardsTimeout(id, time, card) {

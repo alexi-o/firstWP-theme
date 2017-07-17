@@ -223,40 +223,18 @@ button:hover, a:hover {
   width: 100px;
 }
 
-
-
-
-.card.effect_random.flipped .card__front {
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
+.skills-card {
+  margin: 0 10px;
+  max-width: 380px;
+  vertical-align: top;
+  display: inline-block;
+  height: auto;
+  text-align: center;
 }
 
-.card.effect_random.flipped .card__back {
-  -webkit-transform: rotateY(0);
-          transform: rotateY(0);
-}
-
-.card__text {
+.skills-container {
   position: relative;
-  color: #42dca3;
-  font-size: 20px;
-  line-height: 100px;
-  vertical-align: center;
-}
-
-.card__front,
-.card__back {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 0.5s;
-          transition: transform 0.5s;
-}
-
-.card__back {
-  -webkit-transform: rotateY(-180deg);
-          transform: rotateY(-180deg);
-          position: absolute;
-          bottom: 10px;
+  text-align: center;
 }
 
 
